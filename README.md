@@ -168,3 +168,11 @@ MIT License.
 # 10. Maintainer
 
 Tim Murkomen
+
+- **Email Me**: [Email](mailto:timothymurkomen@outlook.com)
+- **Portfolio**: [Portfolio!](https://timmurkomen.com)
+- **Twitter**: [Tweeter (X)!](https://x.com/Tim_Murkomen)
+- **LinkedIn**: [LinkedIn!](https://linkedin.com/in/timoo20)
+- **Medium**: [Medium!](https://medium.com/@timmurkomen)
+
+---
