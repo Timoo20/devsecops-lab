@@ -1,7 +1,8 @@
 # OWASP Juice Shop Installation Guide  
 Running Inside Kali Linux (Single VM)
 
-OWASP Juice Shop is an intentionally vulnerable web application used for secure coding practice, DevSecOps learning, and OWASP Top 10 exploitation labs.  
+OWASP Juice Shop is an intentionally vulnerable web application used for secure coding practice, DevSecOps learning, and OWASP Top 10 exploitation labs.
+
 This guide documents installation and execution inside a single Kali Linux VM.
 
 ---
@@ -15,61 +16,90 @@ Check existing installation:
 ```bash
 node -v
 npm -v
+```
+
 If Node.js is missing:
 
-bash
-Copy code
+```bash
 sudo apt update
 sudo apt install nodejs npm -y
-2. Download Juice Shop Source Code
-Install it inside /opt or any preferred directory.
+```
 
-bash
-Copy code
+---
+
+## 2. Download Juice Shop Source Code
+
+Install it inside `/opt` or any preferred directory.
+
+```bash
 cd /opt
 sudo git clone https://github.com/juice-shop/juice-shop.git
 cd juice-shop
-3. Install Application Dependencies
-bash
-Copy code
-sudo npm install
-This installs all Node modules required to run Juice Shop.
+```
 
-4. Start the Application
-bash
-Copy code
+---
+
+## 3. Install Application Dependencies
+
+```bash
+sudo npm install
+```
+
+This installs all Node.js modules required for Juice Shop.
+
+---
+
+## 4. Start the Application
+
+```bash
 npm start
+```
+
 Expected output:
 
-nginx
-Copy code
+```
 Listening on port 3000
-5. Access the Web Interface
-Open a browser inside Kali:
+```
 
-arduino
-Copy code
+---
+
+## 5. Access the Web Interface
+
+Open a browser inside Kali Linux:
+
+```
 http://localhost:3000
-You should now see the Juice Shop main page.
+```
 
-6. Optional: Run Juice Shop in the Background
-Option A: Using nohup
-bash
-Copy code
+You should now see the Juice Shop homepage.
+
+---
+
+## 6. Optional: Run Juice Shop in the Background
+
+### Option A: Using nohup
+
+```bash
 nohup npm start &
-Option B: Using PM2
-bash
-Copy code
+```
+
+### Option B: Using PM2
+
+```bash
 sudo npm install pm2 -g
 pm2 start server.js
-7. Important Security Warning
-Juice Shop is intentionally vulnerable.
-Do not:
+```
 
-Expose it to your host network
+---
 
-Expose it to the internet
+## 7. Important Security Warning
 
-Run it on a production environment
+Juice Shop is intentionally vulnerable by design.
 
-Use it only inside your isolated Kali VM.
+Do **NOT**:
+
+- expose it to your host network  
+- expose it to the internet  
+- run it in any production environment  
+
+Use it only inside your isolated Kali Linux VM.
