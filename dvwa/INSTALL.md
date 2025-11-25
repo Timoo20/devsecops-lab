@@ -1,111 +1,74 @@
-# DVWA Installation Guide  
-Damn Vulnerable Web Application (DVWA)  
-Author: Tim’s Application Hacking Lab  
+# DVWA Installation Guide (Kali Linux - Single VM Lab)
+
+Damn Vulnerable Web Application (DVWA) is one of the best platforms for practicing real‑world web exploitation techniques such as SQLi, XSS, CSRF, command injection, file upload bypasses, and more.
+
+This document explains how to install, configure, and run DVWA **inside your Kali Linux VM** without using a second machine.
 
 ---
 
-## ⚠ Legal & Ethical Note
-This lab is **ONLY** for legal penetration testing and cybersecurity learning.  
-Do **NOT** expose DVWA to the public internet.
+## 🚀 1. Install Required Packages
 
----
+DVWA requires Apache, PHP, and MariaDB/MySQL.  
+Kali already includes most of them, but we install/verify them anyway.
 
-# 1. Prerequisites
-
-You only need **Kali Linux VM**:
-
-DVWA requires:
-- Apache2
-- PHP 7+
-- MariaDB / MySQL
-- Git
-- PHP modules
-
----
-
-# 2. Install DVWA (Kali Linux)
-
-### Step 1 — Update system
 ```bash
-sudo apt update && sudo apt upgrade -y
+sudo apt update
+sudo apt install apache2 mariadb-server php php-mysqli php-gd php-zip php-curl -y
+```
 
+---
 
+## 🚀 2. Clone DVWA into Kali Web Directory
 
-
-Step 2 — Install LAMP stack
-sudo apt install apache2 mariadb-server php php-mysqli php-gd php-curl php-zip php-mbstring git -y
-
-Step 3 — Clone DVWA into web directory
+```bash
 sudo git clone https://github.com/digininja/DVWA.git /var/www/html/dvwa
+```
 
-Step 4 — Set permissions
+Set correct permissions:
+
+```bash
 sudo chown -R www-data:www-data /var/www/html/dvwa
 sudo chmod -R 755 /var/www/html/dvwa
+```
 
-Step 5 — Configure database
-sudo mysql -u root -e "CREATE DATABASE dvwa;"
-sudo mysql -u root -e "CREATE USER 'dvwa'@'localhost' IDENTIFIED BY 'p@ssw0rd';"
-sudo mysql -u root -e "GRANT ALL PRIVILEGES ON dvwa.* TO 'dvwa'@'localhost';"
-sudo mysql -u root -e "FLUSH PRIVILEGES;"
+---
 
-Step 6 — Edit DVWA config
-sudo cp /var/www/html/dvwa/config/config.inc.php.dist /var/www/html/dvwa/config/config.inc.php
+## 🚀 3. Configure the Database
 
+Start MariaDB:
 
-Edit:
+```bash
+sudo systemctl start mariadb
+sudo mysql_secure_installation
+```
 
-$_DVWA[ 'db_user' ] = 'dvwa';
-$_DVWA[ 'db_password' ] = 'p@ssw0rd';
-$_DVWA[ 'recaptcha_public_key' ] = '';
-$_DVWA[ 'recaptcha_private_key' ] = '';
+When asked about root password — you can set a simple lab password like:
 
-Step 7 — Restart Apache
-sudo systemctl restart apache2
+```
+root / toor / dvwa123 (your choice)
+```
 
-3. Access DVWA
+Create DVWA database:
 
-Open browser inside Kali:
+```bash
+sudo mysql -u root -p
+```
 
-http://127.0.0.1/dvwa
+Then inside MySQL:
 
+```sql
+CREATE DATABASE dvwa;
+CREATE USER 'dvwa'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON dvwa.* TO 'dvwa'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+```
 
-Login:
+---
 
-Username: admin
-Password: password
+## 🚀 4. Configure DVWA Settings
 
+Edit config file:
 
-Initialize database → Click "Create / Reset Database".
-
-4. Set Security Level
-
-DVWA → Security tab:
-
-Low
-
-Medium
-
-High
-
-Impossible
-
-Set to LOW when doing labs.
-
-5. Fix Common Permission Error
-
-If “Unable to write to /hackable/uploads”:
-
-sudo chmod 777 /var/www/html/dvwa/hackable/uploads/
-
-
-If “PHP GD not installed”:
-
-sudo apt install php-gd -y
-sudo systemctl restart apache2
-
-6. Extra: Run DVWA via Docker (Optional)
-docker run --rm -it -p 80:80 vulnerables/web-dvwa
-
-
-
-
+```bash
+sudo nano /var/www/html/dvwa/co
