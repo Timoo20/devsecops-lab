@@ -19,7 +19,7 @@ This is exactly how a real DevSecOps engineer builds their offensive/defensive u
 ##  Objective
 Extract all users from the DVWA database using SQL Injection.
 
-## 🧠 Background
+## Background
 The login parameter is not sanitized:
 
 ```
