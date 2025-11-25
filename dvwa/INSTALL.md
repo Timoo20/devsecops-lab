@@ -6,7 +6,7 @@ This document explains how to install, configure, and run DVWA **inside your Kal
 
 ---
 
-## 🚀 1. Install Required Packages
+##  1. Install Required Packages
 
 DVWA requires Apache, PHP, and MariaDB/MySQL.  
 Kali already includes most of them, but we install/verify them anyway.
@@ -18,7 +18,7 @@ sudo apt install apache2 mariadb-server php php-mysqli php-gd php-zip php-curl -
 
 ---
 
-## 🚀 2. Clone DVWA into Kali Web Directory
+##  2. Clone DVWA into Kali Web Directory
 
 ```bash
 sudo git clone https://github.com/digininja/DVWA.git /var/www/html/dvwa
@@ -33,7 +33,7 @@ sudo chmod -R 755 /var/www/html/dvwa
 
 ---
 
-## 🚀 3. Configure the Database
+##  3. Configure the Database
 
 Start MariaDB:
 
@@ -66,7 +66,7 @@ EXIT;
 
 ---
 
-## 🚀 4. Configure DVWA Settings
+##  4. Configure DVWA Settings
 
 Edit config file:
 
