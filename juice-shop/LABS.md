@@ -1,6 +1,6 @@
 # OWASP Juice Shop Labs
 
-This document contains an expanded, systematic, and comprehensive set of labs for OWASP Juice Shop. All labs are designed to be executed inside a single Kali Linux VM with Juice Shop running locally at `http://localhost:3000`.
+This section contains an expanded, systematic, and comprehensive set of labs for OWASP Juice Shop. All labs are designed to be executed inside a single Kali Linux VM with Juice Shop running locally at `http://localhost:3000`
 
 ---
 
